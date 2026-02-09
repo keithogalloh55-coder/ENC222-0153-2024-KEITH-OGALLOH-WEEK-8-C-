@@ -1,0 +1,74 @@
+C++ Program
+#include <iostream>
+using namespace std;
+
+// Base class
+class Square {
+protected:
+    double side;
+
+public:
+    // Constructor
+    Square(double s) {
+        side = s;
+        cout << "Square constructor called" << endl;
+    }
+
+    // Destructor
+    ~Square() {
+        cout << "Square destructor called" << endl;
+    }
+
+    // Member functions
+    double getPeri() {
+        return 4 * side;
+    }
+
+    double getArea() {
+        return side * side;
+    }
+};
+
+// Derived class
+class Cube : public Square {
+public:
+    // Constructor
+    Cube(double s) : Square(s) {
+        cout << "Cube constructor called" << endl;
+    }
+
+    // Destructor
+    ~Cube() {
+        cout << "Cube destructor called" << endl;
+    }
+
+    // Surface area of cube (method overriding)
+    double getArea() {
+        return 6 * side * side;
+    }
+
+    // Volume of cube
+    double getVolume() {
+        return side * side * side;
+    }
+};
+
+int main() {
+    Cube c(5);
+
+    cout << "Perimeter of square base: " << c.getPeri() << endl;
+    cout << "Surface area of cube: " << c.getArea() << endl;
+    cout << "Volume of cube: " << c.getVolume() << endl;
+
+    return 0;
+}
+sample;
+Square constructor called
+Cube constructor called
+Perimeter of square base: 20
+Surface area of cube: 150
+Volume of cube: 125
+Cube destructor called
+Square destructor called
+
+
